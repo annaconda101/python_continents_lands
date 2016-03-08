@@ -6,15 +6,37 @@ class FilmpondChallenge:
         row = position[0]
 	column = position[1]
 
-	connections = [ 
-	    (row - 1, column - 1),
-	    (row - 1, column),
-	    (row - 1, column + 1),
-	    (row, column + 1),
-	    (row + 1, column + 1),
-	    (row + 1, column),
-	    (row + 1, column - 1),
-	    (row, column - 1)
-	 ]
+	connections = []
+	num_columns = len(map[0])
+	max_row = len(map)
+
+	if (row -1 >= 0) and (column -1 >= 0):
+	    connections.append((row - 1, column - 1))
+
+        if (row -1 >= 0):
+	    connections.append((row - 1, column))
+
+	if (row -1 >= 0) and (column + 1 < num_columns):
+	    connections.append((row - 1, column + 1))
+
+	if (column + 1 < num_columns):
+	    connections.append((row, column + 1))
+
+	if (row + 1 < max_row) and (column + 1 < num_columns):
+	    connections.append((row + 1, column + 1))
+
+	if (row + 1 < max_row):
+	    connections.append((row + 1, column))
+	 
+	if (row + 1 < max_row) and (column - 1 >= 0):
+	    connections.append((row + 1, column - 1))
+	
+	if (column - 1 >= 0):
+	    connections.append((row, column - 1))
 
 	res[position] = [pos for pos in connections if map[pos[0]][pos[1]] == '+']
+
+	# print res[position]
+
+	# res[position] = connections
+

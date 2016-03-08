@@ -35,3 +35,17 @@ class TestFilmpondChallenge(unittest.TestCase):
                                 (1,1): [(0,1),(0,2),(1,2),(2,2),(2,0)]
                               }
                         )
+    
+    def test_edge_land_connections(self):
+        map = [
+            [' ','+','+'],
+            [' ','+','+'],
+            ['+',' ','+']
+        ]
+        fp = FilmpondChallenge()
+        res = {}
+        fp.get_connections(map, (0,2), res)
+        self.assertEqual(res, { 
+                                (0,2): [(1,2),(1,1),(0,1)]
+                              }
+                        )
