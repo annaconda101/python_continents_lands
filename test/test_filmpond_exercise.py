@@ -8,7 +8,7 @@ class TestFilmpondChallenge(unittest.TestCase):
         res = fp.foo() 
         self.assertEqual(res, 'bar')
     
-    def test_sample_map(self):
+    def test_all_land_connections(self):
         map = [
             ['+','+','+'],
             ['+','+','+'],
@@ -19,5 +19,19 @@ class TestFilmpondChallenge(unittest.TestCase):
         fp.get_connections(map, (1,1), res)
         self.assertEqual(res, { 
                                 (1,1): [(0,0),(0,1),(0,2),(1,2),(2,2),(2,1),(2,0),(1,0)]
+                              }
+                        )
+    
+    def test_some_land_connections(self):
+        map = [
+            [' ','+','+'],
+            [' ','+','+'],
+            ['+',' ','+']
+        ]
+        fp = FilmpondChallenge()
+        res = {}
+        fp.get_connections(map, (1,1), res)
+        self.assertEqual(res, { 
+                                (1,1): [(0,1),(0,2),(1,2),(2,2),(2,0)]
                               }
                         )
