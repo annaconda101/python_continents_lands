@@ -2,6 +2,17 @@ class FilmpondChallenge:
     def foo(self):
         return 'bar'
     
+    def get_continents(self, connections, continents):
+    	visited_land_position = []
+
+    	for land_position in connections.keys():
+	    if not land_position in visited_land_position:
+	        continent_land_positions = []
+
+                self.get_continent(connections, land_position, continent_land_positions)
+		continents.append(continent_land_positions)
+		visited_land_position = visited_land_position + continent_land_positions
+
     def get_continent(self, connections, pos, continents):
         if pos not in continents:
 	    continents.append(pos)
