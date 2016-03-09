@@ -8,7 +8,7 @@ class FilmpondChallenge:
 
 	connections = []
 	num_columns = len(map[0])
-	max_row = len(map)
+	num_rows = len(map)
 
 	if (row -1 >= 0) and (column -1 >= 0):
 	    connections.append((row - 1, column - 1))
@@ -22,13 +22,13 @@ class FilmpondChallenge:
 	if (column + 1 < num_columns):
 	    connections.append((row, column + 1))
 
-	if (row + 1 < max_row) and (column + 1 < num_columns):
+	if (row + 1 < num_rows) and (column + 1 < num_columns):
 	    connections.append((row + 1, column + 1))
 
-	if (row + 1 < max_row):
+	if (row + 1 < num_rows):
 	    connections.append((row + 1, column))
 	 
-	if (row + 1 < max_row) and (column - 1 >= 0):
+	if (row + 1 < num_rows) and (column - 1 >= 0):
 	    connections.append((row + 1, column - 1))
 	
 	if (column - 1 >= 0):
