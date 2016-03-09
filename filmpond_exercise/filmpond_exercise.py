@@ -2,12 +2,16 @@ class FilmpondChallenge:
     def foo(self):
         return 'bar'
     
+    def get_continent(self, connections, pos, continents):
+        if pos not in continents:
+	    continents.append(pos)
+	    for new_pos in connections[pos]:
+	        self.get_continent(connections, new_pos, continents)
+
     def get_all_connections(self, map, res): 
         for i,row in enumerate(map):
             for x,pos in enumerate(row):
 		if pos == '+':
-		    # import pdb
-		    # pdb.set_trace()
 	            self.get_connections(map, (i,x), res)
     
     def get_connections(self, map, position, res):
