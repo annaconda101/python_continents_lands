@@ -5,7 +5,10 @@ class FilmpondChallenge:
     def get_all_connections(self, map, res): 
         for i,row in enumerate(map):
             for x,pos in enumerate(row):
-	        self.get_connections(map, (i,x), res)
+		if pos == '+':
+		    # import pdb
+		    # pdb.set_trace()
+	            self.get_connections(map, (i,x), res)
     
     def get_connections(self, map, position, res):
         row = position[0]

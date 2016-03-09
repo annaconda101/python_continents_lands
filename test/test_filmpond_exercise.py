@@ -72,3 +72,22 @@ class TestFilmpondChallenge(unittest.TestCase):
                               }
                         )
 
+    def test_all_land_connections_with_gaps(self):
+        map = [
+            [' ','+','+'],
+            [' ','+','+'],
+            ['+',' ','+']
+        ]
+        fp = FilmpondChallenge()
+        res = {}
+        fp.get_all_connections(map, res)
+        self.assertEqual(res, { 
+                                (0,1): [(0,2),(1,2),(1,1)],
+                                (0,2): [(1,2),(1,1),(0,1)],
+                                (1,1): [(0,1),(0,2),(1,2),(2,2),(2,0)],
+                                (1,2): [(0,1),(0,2),(2,2),(1,1)],
+                                (2,0): [(1,1)],
+                                (2,2): [(1,1),(1,2)]
+                              }
+                        )
+
