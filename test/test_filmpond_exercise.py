@@ -120,7 +120,6 @@ class TestFilmpondChallenge(unittest.TestCase):
         fp.get_continents(connections, continents)
         self.assertEqual(continents, [[(0, 1), (1, 0), (0, 0), (2, 1), (2, 0)], [(5, 2), (4, 1), (4, 2), (5, 1), (4, 0), (5, 0)], [(1, 3), (0, 3)]])
 
-
     def test_parse_some_lines(self):
         fp = FilmpondChallenge()
         url = 'https://s3-ap-southeast-2.amazonaws.com/demo.idg.com.au/annav/map2.txt'
@@ -132,7 +131,6 @@ class TestFilmpondChallenge(unittest.TestCase):
                              ]
                         )
    
-
     def test_parse_sample_file(self):
         fp = FilmpondChallenge()
         url = 'https://s3-ap-southeast-2.amazonaws.com/uat-filmpond-bucket/candidates/map.txt'
@@ -205,3 +203,16 @@ class TestFilmpondChallenge(unittest.TestCase):
                                 [' ','+','+','+','+',' ','+','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','+','+','+','+','+','+','+',' ','+','+','+','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','+','+','+','+','+','+','+','+',' ','+',' ',' ',' '],
                              ]
                         )
+
+    def test_get_continents_from_url(self):
+        fp = FilmpondChallenge()
+        url = 'https://s3-ap-southeast-2.amazonaws.com/uat-filmpond-bucket/candidates/map.txt'
+        map = []
+        fp.parse_file(url, map)
+        clean_map = []
+        fp.clean_map(map, clean_map)
+        connections = {}
+        fp.get_all_connections(clean_map, connections)
+        continents = []
+        fp.get_continents(connections, continents)
+        self.assertEqual(len(continents), 3) 
