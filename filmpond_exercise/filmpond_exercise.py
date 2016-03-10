@@ -1,5 +1,3 @@
-import urllib2
-
 class FilmpondChallenge:
     def get_continents_from_file_path(self, file_path, continents): 
         map = []
