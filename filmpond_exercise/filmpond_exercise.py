@@ -1,12 +1,9 @@
 import urllib2
 
 class FilmpondChallenge:
-    def foo(self):
-        return 'bar'
-
-    def get_continents_from_url(self, url, continents): 
+    def get_continents_from_file_path(self, file_path, continents): 
         map = []
-        self.parse_file(url, map)
+        self.parse_file(file_path, map)
         clean_map = []
         self.clean_map(map, clean_map)
         connections = {}
@@ -17,13 +14,13 @@ class FilmpondChallenge:
         for row in map:
 	    clean_map.append(row[3:][:-3])
     
-    def parse_file(self, url, map):
-	file = urllib2.urlopen(url)
-	for row in file:
-	    positions = []
-	    for position in row:
-	        positions.append(position)
-	    map.append(positions[:-2])
+    def parse_file(self, file_path, map):
+        file = open(file_path)
+        for row in file.readlines():
+	        positions = []
+	        for position in row:
+	            positions.append(position)
+	        map.append(positions[:-2])
 
     def get_continents(self, connections, continents):
     	visited_land_position = []

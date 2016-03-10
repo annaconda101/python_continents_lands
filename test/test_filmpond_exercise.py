@@ -3,11 +3,6 @@ import unittest
 from filmpond_exercise.filmpond_exercise import FilmpondChallenge
 
 class TestFilmpondChallenge(unittest.TestCase):
-    def test_foo(self):
-        fp = FilmpondChallenge()
-        res = fp.foo() 
-        self.assertEqual(res, 'bar')
-    
     def test_all_land_connections(self):
         map = [
             ['+','+','+'],
@@ -122,9 +117,9 @@ class TestFilmpondChallenge(unittest.TestCase):
 
     def test_parse_some_lines(self):
         fp = FilmpondChallenge()
-        url = 'https://s3-ap-southeast-2.amazonaws.com/demo.idg.com.au/annav/map2.txt'
+        file_path = 'test/fixtures/map_small_sample.txt'
         map = []
-        fp.parse_file(url, map)
+        fp.parse_file(file_path, map)
         self.assertEqual(map, [
                                 [' ','1',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','1',' '],
                                 [' ','2',' ',' ','+','+','+','+',' ','+','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','+','+','+','+','+','+','+',' ','+','+','+','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','+','+','+','+','+','+','+','+',' ','+',' ',' ',' ',' ','2',' '],
@@ -133,9 +128,9 @@ class TestFilmpondChallenge(unittest.TestCase):
    
     def test_parse_sample_file(self):
         fp = FilmpondChallenge()
-        url = 'https://s3-ap-southeast-2.amazonaws.com/uat-filmpond-bucket/candidates/map.txt'
+        file_path = 'test/fixtures/map.txt'
         map = []
-        fp.parse_file(url, map)
+        fp.parse_file(file_path, map)
         self.assertEqual(map, [
                        [' ','1',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','1',' '],
                        [' ','2',' ',' ','+','+','+','+',' ','+','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','+','+','+','+','+','+','+',' ','+','+','+','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','+','+','+','+','+','+','+','+',' ','+',' ',' ',' ',' ','2',' '],
@@ -193,9 +188,9 @@ class TestFilmpondChallenge(unittest.TestCase):
     
     def test_clean_some_lines(self):
         fp = FilmpondChallenge()
-        url = 'https://s3-ap-southeast-2.amazonaws.com/demo.idg.com.au/annav/map2.txt'
+        file_path = 'test/fixtures/map_small_sample.txt'
         map = []
-        fp.parse_file(url, map)
+        fp.parse_file(file_path, map)
         clean_map = []
         fp.clean_map(map, clean_map)
         self.assertEqual(clean_map, [
@@ -204,9 +199,9 @@ class TestFilmpondChallenge(unittest.TestCase):
                              ]
                         )
 
-    def test_get_continents_from_url(self):
+    def test_get_continents_from_file_path(self):
         fp = FilmpondChallenge()
-        url = 'https://s3-ap-southeast-2.amazonaws.com/uat-filmpond-bucket/candidates/map.txt'
+        file_path = 'test/fixtures/map.txt'
         continents = []
-        fp.get_continents_from_url(url, continents)
+        fp.get_continents_from_file_path(file_path, continents)
         self.assertEqual(len(continents), 3) 
