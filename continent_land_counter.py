@@ -1,6 +1,13 @@
+#!/usr/bin/python
+import sys
+
 from filmpond_exercise.filmpond_exercise import FilmpondChallenge
 
-file_path = 'test/fixtures//map.txt'
+file_path = sys.argv[1]
+file = open(file_path, 'r')
+file_contents = file.read()
+file.close()
+
 continents = []
 
 fp = FilmpondChallenge()
