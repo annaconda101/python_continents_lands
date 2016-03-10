@@ -207,12 +207,6 @@ class TestFilmpondChallenge(unittest.TestCase):
     def test_get_continents_from_url(self):
         fp = FilmpondChallenge()
         url = 'https://s3-ap-southeast-2.amazonaws.com/uat-filmpond-bucket/candidates/map.txt'
-        map = []
-        fp.parse_file(url, map)
-        clean_map = []
-        fp.clean_map(map, clean_map)
-        connections = {}
-        fp.get_all_connections(clean_map, connections)
         continents = []
-        fp.get_continents(connections, continents)
+        fp.get_continents_from_url(url, continents)
         self.assertEqual(len(continents), 3) 
