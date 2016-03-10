@@ -1,7 +1,20 @@
 class FilmpondChallenge:
     def foo(self):
         return 'bar'
+
+    def clean_map(self, map, clean_map):
+        for row in map:
+	    clean_map.append(row[3:][:-3])
     
+    def parse_file(self, url, map):
+        import urllib2
+	file = urllib2.urlopen(url)
+	for row in file:
+	    positions = []
+	    for position in row:
+	        positions.append(position)
+	    map.append(positions[:-2])
+
     def get_continents(self, connections, continents):
     	visited_land_position = []
 
